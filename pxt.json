@@ -1,0 +1,49 @@
+{
+    "name": "Boba Tea Game",
+    "description": "",
+    "dependencies": {
+        "device": "*",
+        "arcade-fancy-text": "github:riknoll/arcade-fancy-text#v0.2.1",
+        "Stats": "github:UnsignedArduino/Stats#758e35856bd5565e5d0e25c95cccfac79b7fc168",
+        "Timers": "github:microsoft/arcade-timers#v1.1.0"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "assets.json",
+        "images.g.jres",
+        "images.g.ts",
+        "tilemap.g.jres",
+        "tilemap.g.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "2.0.63",
+        "targetId": "arcade"
+    },
+    "supportedTargets": [
+        "arcade"
+    ],
+    "preferredEditor": "blocksprj",
+    "palette": [
+        "#000000",
+        "#F5EEB0",
+        "#FABF61",
+        "#E08D51",
+        "#8A5865",
+        "#452B3F",
+        "#609C4F",
+        "#2C5E3B",
+        "#C6CC54",
+        "#78C2D6",
+        "#5479B0",
+        "#56546E",
+        "#839FA6",
+        "#F05B5B",
+        "#D57CCD",
+        "#ECCBE9"
+    ]
+}

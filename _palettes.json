@@ -1,0 +1,51 @@
+{
+    "nextPaletteID": 2,
+    "palettes": {
+        "custom0": {
+            "id": "custom0",
+            "name": "WoodSpark by Anubi",
+            "colors": [
+                "#000000",
+                "#F5EEB0",
+                "#FABF61",
+                "#E08D51",
+                "#8A5865",
+                "#452B3F",
+                "#609C4F",
+                "#2C5E3B",
+                "#C6CC54",
+                "#78C2D6",
+                "#5479B0",
+                "#56546E",
+                "#839FA6",
+                "#F05B5B",
+                "#AE4276",
+                "#D06CCD"
+            ],
+            "custom": true
+        },
+        "custom1": {
+            "id": "custom1",
+            "name": "Custom",
+            "colors": [
+                "#000000",
+                "#F5EEB0",
+                "#FABF61",
+                "#E08D51",
+                "#8A5865",
+                "#452B3F",
+                "#609C4F",
+                "#2C5E3B",
+                "#C6CC54",
+                "#78C2D6",
+                "#5479B0",
+                "#56546E",
+                "#839FA6",
+                "#F05B5B",
+                "#D57CCD",
+                "#ECCBE9"
+            ],
+            "custom": true
+        }
+    }
+}
