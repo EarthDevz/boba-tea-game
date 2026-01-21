@@ -1,11 +1,11 @@
 namespace SpriteKind {
     export const Text = SpriteKind.create()
 }
-function TutorialGuyText2 (text: string) {
-    TutorialGuyText = fancyText.create(text, 0, 3, fancyText.rounded_large)
-    TutorialGuyText.setPosition(256, 100)
-    TutorialGuyText.setKind(SpriteKind.Text)
-    fancyText.animateAtSpeed(TutorialGuyText, fancyText.TextSpeed.Slow, fancyText.AnimationPlayMode.UntilDone)
+function TutorialGuyText (text: string) {
+    tutorialGuyText = fancyText.create(text, 0, 3, fancyText.rounded_large)
+    tutorialGuyText.setPosition(256, 100)
+    tutorialGuyText.setKind(SpriteKind.Text)
+    fancyText.animateAtSpeed(tutorialGuyText, fancyText.TextSpeed.Slow, fancyText.AnimationPlayMode.UntilDone)
     timer.debounce("action", 2000, function () {
         ProgressText = fancyText.create("Click A to progress", 0, 2, fancyText.rounded_small)
         ProgressText.setPosition(400, 250)
@@ -118,7 +118,12 @@ function CreateCustomer () {
         `)
 }
 function Introduction () {
-	
+    TutorialGuyText("Hey! I am the <c9>Tutorial Guy.")
+    TutorialGuyText("I will teach you how to run the<c9> Boba Tea Shop.")
+    CreateCustomer()
+    TutorialGuyText("This is a <c9>customer")
+    TutorialGuyText("The <c9>Customer</c9> has said the order")
+    TutorialGuyText("Write it down by clicking the <c9> Notepad</c9> in the top left")
 }
 function ClearScreen () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
@@ -512,18 +517,12 @@ function ClearScreen () {
         ................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
         ................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
         `)
-    TutorialGuyText("Hey! I am the <c9>Tutorial Guy.")
-    TutorialGuyText("I will teach you how to run the<c9> Boba Tea Shop.")
-    CreateCustomer()
-    TutorialGuyText("This is a <c9>customer")
-    TutorialGuyText("The <c9>Customer</c9> has said the order")
-    TutorialGuyText("Write it down by clicking the <c9> Notepad")
 }
 let CustomerText: fancyText.TextSprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
 let ProgressText: fancyText.TextSprite = null
-let TutorialGuyText: fancyText.TextSprite = null
+let tutorialGuyText: fancyText.TextSprite = null
 let customerOrders: string[] = []
 let mySprite: Sprite = null
 namespace userconfig {
