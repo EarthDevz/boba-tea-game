@@ -19,6 +19,11 @@ function TutorialGuyText (text: string) {
     pauseUntil(() => !(controller.A.isPressed()))
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
 }
+browserEvents.onMouseMove(function (x, y) {
+    if (Cursor) {
+        Cursor.setPosition(x, y)
+    }
+})
 function HomeScreen () {
     mySprite2 = sprites.create(image.create(4, 160), SpriteKind.Player)
     mySprite2.y += 18
@@ -91,13 +96,35 @@ function HomeScreen () {
     ClearScreen()
     Introduction()
 }
-browserEvents.onMouseMove(function (x, y) {
-    if (Cursor) {
-        Cursor.setPosition(x, y)
+function ActualBttons (Button: Sprite, Mouse: Sprite) {
+    if (ButtonCheck("Notes", Button)) {
+        Button.y = -40
+        sprites.setDataString(Button, "Type", "OpenNotes")
+        Button.setImage(assets.image`myImage6`)
+        Button.vy = 50
+        fancyText.draw("Customer #" + (CustomerNumber + 1), Button.image, 3, 7, 94, 7, fancyText.geometric_sans_11)
+        for (let index = 0; index <= 4; index++) {
+            fancyText.draw("-" + customerOrders[CustomerNumber][index], Button.image, 3, index * 12 + 25, 94, 5, fancyText.geometric_sans_9)
+        }
+        pause(1000)
+        Button.vy = 0
+    } else if (ButtonCheck("Notes", Button)) {
+    	
+    } else {
+    	
     }
-})
+}
+function ButtonCheck (text: string, mySprite: Sprite) {
+    return sprites.readDataString(mySprite, "Type") == text
+}
+function CreateNotePad () {
+    NotePad = sprites.create(assets.image`myImage5`, SpriteKind.Button)
+    sprites.setDataString(NotePad, "Type", "Notes")
+    NotePad.setPosition(50, 15)
+}
 function CreateCustomer () {
-    CustomerText = fancyText.create(customerOrders[0], 480, 12, fancyText.geometric_sans_11)
+    CustomerText = fancyText.create("I want a <c9>" + customerOrders[0][0] + " " + customerOrders[0][1] + " Milk Tea</c9> With <c9>" + customerOrders[0][2] + " Boba</c9>." + "It has<c9> " + customerOrders[0][3] + "</c9> and <c9>" + customerOrders[0][4] + ".", 480, 12, fancyText.geometric_sans_11)
+    CustomerNumber += 1
     CustomerText.setPosition(256, 192)
     fancyText.setFrame(CustomerText, img`
         5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
@@ -118,11 +145,13 @@ function CreateCustomer () {
         `)
 }
 function Introduction () {
-    TutorialGuyText("Hey! I am the <c9>Tutorial Guy.")
-    TutorialGuyText("I will teach you how to run the<c9> Boba Tea Shop.")
-    CreateCustomer()
-    TutorialGuyText("This is a <c9>customer")
-    TutorialGuyText("The <c9>Customer</c9> has said the order")
+    if (false) {
+        TutorialGuyText("Hey! I am the <c9>Tutorial Guy.")
+        TutorialGuyText("I will teach you how to run the<c9> Boba Tea Shop.")
+        CreateCustomer()
+        TutorialGuyText("This is a <c9>customer")
+        TutorialGuyText("The <c9>Customer</c9> has said the order")
+    }
     Cursor = sprites.create(img`
         3 3 3 3 3 3 3 3 3 3 
         3 3 3 3 3 3 3 3 3 3 
@@ -135,13 +164,10 @@ function Introduction () {
         3 3 3 3 3 3 3 3 3 3 
         3 3 3 3 3 3 3 3 3 3 
         `, SpriteKind.Mouse)
+    Cursor.z = 10
+    CreateNotePad()
     TutorialGuyText("Write it down by clicking the <c9> Notepad</c9> in the top left")
 }
-sprites.onOverlap(SpriteKind.Mouse, SpriteKind.Button, function (sprite, otherSprite) {
-    if (true) {
-    	
-    }
-})
 function ClearScreen () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
@@ -535,13 +561,32 @@ function ClearScreen () {
         ................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
         `)
 }
+sprites.onOverlap(SpriteKind.Mouse, SpriteKind.Button, function (sprite, otherSprite) {
+    sprite.setImage(img`
+        2 2 2 2 2 2 2 2 2 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 2 2 2 2 2 2 2 2 2 
+        `)
+    if (browserEvents.MouseLeft.isPressed()) {
+        ActualBttons(otherSprite, sprite)
+    }
+})
 let CustomerText: fancyText.TextSprite = null
-let Cursor: Sprite = null
+let NotePad: Sprite = null
+let CustomerNumber = 0
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
+let Cursor: Sprite = null
 let ProgressText: fancyText.TextSprite = null
 let tutorialGuyText: fancyText.TextSprite = null
-let customerOrders: string[] = []
+let customerOrders: string[][] = []
 let mySprite: Sprite = null
 namespace userconfig {
 export const ARCADE_SCREEN_WIDTH = 512
@@ -562,5 +607,11 @@ let customerOrderList = [
 ["Double Boba", "Normal Boba", "No Boba"],
 ["Normal Ice", "Half Ice", "No Ice"]
 ]
-customerOrders = ["Hey I would like a <c9>" + customerOrderList[0][randint(0, 3)] + "</c9> <c9>" + customerOrderList[1][randint(0, 2)] + " Milk Tea</c9> with <c9>" + customerOrderList[2][randint(0, 2)] + "</c9>, <c9>" + customerOrderList[3][randint(0, 2)] + "</c9> and <c9>" + customerOrderList[4][randint(0, 2)]]
+customerOrders = [[
+customerOrderList[0][randint(0, 3)],
+customerOrderList[1][randint(0, 2)],
+customerOrderList[2][randint(0, 2)],
+customerOrderList[3][randint(0, 2)],
+customerOrderList[4][randint(0, 2)]
+]]
 HomeScreen()
