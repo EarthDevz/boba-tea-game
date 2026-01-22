@@ -5,7 +5,9 @@
         "device": "*",
         "arcade-fancy-text": "github:riknoll/arcade-fancy-text#v0.2.1",
         "Stats": "github:UnsignedArduino/Stats#758e35856bd5565e5d0e25c95cccfac79b7fc168",
-        "Timers": "github:microsoft/arcade-timers#v1.1.0"
+        "Timers": "github:microsoft/arcade-timers#v1.1.0",
+        "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.2.1",
+        "browser-events": "*"
     },
     "files": [
         "main.blocks",

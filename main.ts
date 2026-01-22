@@ -1,16 +1,19 @@
 namespace SpriteKind {
     export const Text = SpriteKind.create()
+    export const Mouse = SpriteKind.create()
+    export const Button = SpriteKind.create()
 }
 function TutorialGuyText (text: string) {
     tutorialGuyText = fancyText.create(text, 0, 3, fancyText.rounded_large)
     tutorialGuyText.setPosition(256, 100)
     tutorialGuyText.setKind(SpriteKind.Text)
-    fancyText.animateAtSpeed(tutorialGuyText, fancyText.TextSpeed.Slow, fancyText.AnimationPlayMode.UntilDone)
+    fancyText.animateAtSpeed(tutorialGuyText, fancyText.TextSpeed.Normal, fancyText.AnimationPlayMode.UntilDone)
+    ProgressText = fancyText.create("", 0, 2, fancyText.rounded_small)
+    ProgressText.setKind(SpriteKind.Text)
     timer.debounce("action", 2000, function () {
-        ProgressText = fancyText.create("Click A to progress", 0, 2, fancyText.rounded_small)
+        fancyText.setText(ProgressText, "Click A to progress")
         ProgressText.setPosition(400, 250)
-        ProgressText.setKind(SpriteKind.Text)
-        fancyText.animateAtSpeed(ProgressText, fancyText.TextSpeed.Slow, fancyText.AnimationPlayMode.UntilDone)
+        fancyText.animateAtSpeed(ProgressText, fancyText.TextSpeed.Normal, fancyText.AnimationPlayMode.UntilDone)
     })
     pauseUntil(() => controller.A.isPressed())
     pauseUntil(() => !(controller.A.isPressed()))
@@ -28,40 +31,32 @@ function HomeScreen () {
             3 3 3 3 
             2 2 2 2 
             `, 0, index * 6)
-        pause(1)
     }
     for (let index = 0; index <= 5; index++) {
         mySprite.image.drawLine(18, 190 - index, 61, 190 - index, 3)
-        pause(1)
     }
     for (let index2 = 0; index2 <= 14; index2++) {
         for (let index = 0; index <= 9; index++) {
             mySprite.image.drawLine(17 - index2, 184 - index - index2 * 10, 62 + index2, 184 - index - index2 * 10, 3)
             mySprite.image.drawLine(17 - index2, 183 - index - index2 * 10, 62 + index2, 183 - index - index2 * 10, 2)
             mySprite.image.drawLine(17 - index2, 182 - index - index2 * 10, 62 + index2, 182 - index - index2 * 10, 1)
-            pause(1)
         }
     }
     for (let index = 0; index < 150; index++) {
         mySprite.image.drawTransparentImage(assets.image`Boba`, randint(17, 62), randint(180, 190))
-        pause(1)
     }
     for (let index = 0; index < 125; index++) {
         mySprite.image.drawTransparentImage(assets.image`Boba`, randint(16, 63), randint(170, 180))
-        pause(1)
     }
     sprites.destroy(mySprite2)
     for (let index = 0; index < 100; index++) {
         mySprite.image.drawTransparentImage(assets.image`Boba`, randint(15, 64), randint(160, 170))
-        pause(1)
     }
     for (let index = 0; index < 75; index++) {
         mySprite.image.drawTransparentImage(assets.image`Boba`, randint(14, 65), randint(150, 160))
-        pause(1)
     }
     for (let index = 0; index < 25; index++) {
         mySprite.image.drawTransparentImage(assets.image`Boba`, randint(13, 66), randint(140, 150))
-        pause(1)
     }
     mySprite.image.drawTransparentImage(assets.image`myImage`, 0, 0)
     mySprite.image.drawTransparentImage(assets.image`Straw`, 55, 4)
@@ -96,6 +91,11 @@ function HomeScreen () {
     ClearScreen()
     Introduction()
 }
+browserEvents.onMouseMove(function (x, y) {
+    if (Cursor) {
+        Cursor.setPosition(x, y)
+    }
+})
 function CreateCustomer () {
     CustomerText = fancyText.create(customerOrders[0], 480, 12, fancyText.geometric_sans_11)
     CustomerText.setPosition(256, 192)
@@ -123,8 +123,25 @@ function Introduction () {
     CreateCustomer()
     TutorialGuyText("This is a <c9>customer")
     TutorialGuyText("The <c9>Customer</c9> has said the order")
+    Cursor = sprites.create(img`
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        3 3 3 3 3 3 3 3 3 3 
+        `, SpriteKind.Mouse)
     TutorialGuyText("Write it down by clicking the <c9> Notepad</c9> in the top left")
 }
+sprites.onOverlap(SpriteKind.Mouse, SpriteKind.Button, function (sprite, otherSprite) {
+    if (true) {
+    	
+    }
+})
 function ClearScreen () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
@@ -519,6 +536,7 @@ function ClearScreen () {
         `)
 }
 let CustomerText: fancyText.TextSprite = null
+let Cursor: Sprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
 let ProgressText: fancyText.TextSprite = null
