@@ -49,6 +49,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "myImage6"
     },
+    "image11": {
+        "data": "hwQyAB4AAAAzMzMzMzMzMzMzMzMzMzMAIyIiIiIiIiIiIiIiIiIyACMiQyIiIiIiIiIiIiIiMgAjIkNmZmZmZmYiIiIiIjIAIzJ3d3d3d3dnIkMyJCIyACMyZGZmdndmZiJDMkMiMgAjMkNidmd2ZzY0JCIiIjIAIyJDZndmZnc2JCIiIiIyACMiQ3dmJmJ2NyQiIiIiMgAjIkNmJiIiZjYkIiIiIjIAIyJDMiQiInYzJCIiQyIzACNiZjIkIiJ2QyIiIkMiAwAjYmc2ZGZmdiYiIiJDIgMAI2J3d3d3d3cmIiIiQyIDACNiZzZDZmZ2JiIiIiIiMwAjYmciIiJDdiYiIjMkIjIAI2JmIiIiQ2ZDIiJDIiIyACMiYmYmMkMiMyQiMyQiMgAjImJ3JjIkIiIiIjJDIjIAIyJmZ2YzZGY2JCIiQyIyACMkdnd3d3d3dyQiIjIkMgAjQ3ZmZmZmZkMiIiIiIjIAIzN0ZmZmZmZDIiIyJCIyACMyM2R3d3d3ZiIiMiQiMgAjIkN2Z2ZmZmcmIjIkIjIAIyJDZ2YiJGJ3JjI0JCIyACMic2dDIiJiZiYyNCQiMgAjInNmQ2ZmZmYmIiIiIjIAI2J3d3d3d3d3JiIiIiIyACMiQ2Y2ZHc2ZCYiMiQiMgAjIkMiMnRmNiQiIjIkIjMAIyJDIjJ0JjIkMiQyJCIDACMiQyIic2ZmZiYiMkMiAwAjIkMiInN3d3cmIiJDIgMAIzKEiCIzZGZmJiIiQyIDACMyZoaIiIhoOCQiIkMiAwAjMmZoZmZmZjaEiCJDIgMAIyJjiIg4hGhoZoY4QyIDACMiYygiMoRmiDhmOCQiMwAjImMoIjKEhigzhjgkIjIAIyJjJCIyQ4YiQ4YyJCIyADMiMiQiIiKIIkOGIkMiMgAwIiKCiIgzhEOIiCJDIjIAMCIigmZmZmZmZigiMyQyADAiIoJmZkaIQ4goIiIiMgAzIiKCiIhjZmZmKCIiIjIAIyIiIoiIaGZmhigiIiIyACMiIiJoZoaIiIgiIiIiMgAzMzMzMzMzMzMzMyMiIjMAAAAAAAAAAAAAAAAzMzMDAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "myImage7"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

@@ -3,8 +3,15 @@ namespace SpriteKind {
     export const Mouse = SpriteKind.create()
     export const Button = SpriteKind.create()
 }
+function Create_Kitchen () {
+    for (let index = 0; index < 99999999999; index++) {
+        timer.background(function () {
+            pause(1000)
+        })
+    }
+}
 function TutorialGuyText (text: string) {
-    tutorialGuyText = fancyText.create(text, 0, 3, fancyText.rounded_large)
+    tutorialGuyText = fancyText.create(text, 500, 3, fancyText.rounded_large)
     tutorialGuyText.setPosition(256, 100)
     tutorialGuyText.setKind(SpriteKind.Text)
     fancyText.animateAtSpeed(tutorialGuyText, fancyText.TextSpeed.Normal, fancyText.AnimationPlayMode.UntilDone)
@@ -98,21 +105,21 @@ function HomeScreen () {
 }
 function ActualBttons (Button: Sprite, Mouse: Sprite) {
     if (ButtonCheck("Notes", Button)) {
-        Button.y = -40
+        Button.setPosition(50, 15)
         sprites.setDataString(Button, "Type", "OpenNotes")
         Button.setImage(assets.image`myImage6`)
-        Button.vy = 50
         fancyText.draw("Customer #" + (CustomerNumber + 1), Button.image, 3, 7, 94, 7, fancyText.geometric_sans_11)
         for (let index = 0; index <= 4; index++) {
             fancyText.draw("-" + customerOrders[CustomerNumber][index], Button.image, 3, index * 12 + 25, 94, 5, fancyText.geometric_sans_9)
         }
-        pause(1000)
-        Button.vy = 0
-    } else if (ButtonCheck("Notes", Button)) {
-    	
+    } else if (ButtonCheck("OpenNotes", Button)) {
+        Button.setImage(assets.image`myImage5`)
+        sprites.setDataString(Button, "Type", "Notes")
+        spriteutils.moveTo(Button, spriteutils.pos(50, 15), 1000)
     } else {
     	
     }
+    pauseUntil(() => !(browserEvents.MouseLeft.isPressed()))
 }
 function ButtonCheck (text: string, mySprite: Sprite) {
     return sprites.readDataString(mySprite, "Type") == text
@@ -149,24 +156,27 @@ function Introduction () {
         TutorialGuyText("Hey! I am the <c9>Tutorial Guy.")
         TutorialGuyText("I will teach you how to run the<c9> Boba Tea Shop.")
         CreateCustomer()
-        TutorialGuyText("This is a <c9>customer")
-        TutorialGuyText("The <c9>Customer</c9> has said the order")
+        TutorialGuyText("This is a <c9>customer.")
+        TutorialGuyText("The <c9>Customer</c9> has said the order.")
+        Cursor = sprites.create(img`
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            3 3 3 3 3 3 3 3 3 3 
+            `, SpriteKind.Mouse)
+        Cursor.z = 10
+        CreateNotePad()
+        TutorialGuyText("Write it down by clicking the <c9> Notepad</c9> in the top left.")
     }
-    Cursor = sprites.create(img`
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        3 3 3 3 3 3 3 3 3 3 
-        `, SpriteKind.Mouse)
-    Cursor.z = 10
-    CreateNotePad()
-    TutorialGuyText("Write it down by clicking the <c9> Notepad</c9> in the top left")
+    Create_Kitchen()
+    TutorialGuyText("Now Enter <c9>The Kitchen</c9>. This is where you will make the order")
+    TutorialGuyText("First go to the <c9>Milk Station</c9>")
 }
 function ClearScreen () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
