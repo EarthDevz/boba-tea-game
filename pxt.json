@@ -7,7 +7,9 @@
         "Stats": "github:UnsignedArduino/Stats#758e35856bd5565e5d0e25c95cccfac79b7fc168",
         "Timers": "github:microsoft/arcade-timers#v1.1.0",
         "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.2.1",
-        "browser-events": "*"
+        "browser-events": "*",
+        "BetterSettings": "github:sargedev/bettersettings#2023.5.1",
+        "FastRandomBlocks": "github:UnsignedArduino/Fast-Random-Blocks#8c985a77e5c4278e43a7bc375db095c67afb58ed"
     },
     "files": [
         "main.blocks",
