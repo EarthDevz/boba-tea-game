@@ -4,11 +4,24 @@ namespace SpriteKind {
     export const Button = SpriteKind.create()
 }
 function Create_Kitchen () {
-    for (let index = 0; index < 99999999999; index++) {
-        timer.background(function () {
-            pause(1000)
-        })
-    }
+    KitchenButton = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
 }
 function TutorialGuyText (text: string) {
     tutorialGuyText = fancyText.create(text, 500, 3, fancyText.rounded_large)
@@ -26,65 +39,47 @@ function TutorialGuyText (text: string) {
     pauseUntil(() => !(controller.A.isPressed()))
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
 }
-browserEvents.onMouseMove(function (x, y) {
-    if (Cursor) {
-        Cursor.setPosition(x, y)
-    }
-})
 function HomeScreen () {
-    mySprite2 = sprites.create(image.create(4, 160), SpriteKind.Player)
-    mySprite2.y += 18
-    for (let index = 0; index <= 25; index++) {
-        mySprite2.image.drawTransparentImage(img`
-            3 3 3 3 
-            3 3 3 3 
-            3 3 3 3 
-            3 3 3 3 
-            3 3 3 3 
-            2 2 2 2 
-            `, 0, index * 6)
+    for (let index3 = 0; index3 <= 5; index3++) {
+        ScreenBoba.image.drawLine(18, 190 - index3, 61, 190 - index3, 3)
     }
-    for (let index = 0; index <= 5; index++) {
-        mySprite.image.drawLine(18, 190 - index, 61, 190 - index, 3)
-    }
-    for (let index2 = 0; index2 <= 14; index2++) {
-        for (let index = 0; index <= 9; index++) {
-            mySprite.image.drawLine(17 - index2, 184 - index - index2 * 10, 62 + index2, 184 - index - index2 * 10, 3)
-            mySprite.image.drawLine(17 - index2, 183 - index - index2 * 10, 62 + index2, 183 - index - index2 * 10, 2)
-            mySprite.image.drawLine(17 - index2, 182 - index - index2 * 10, 62 + index2, 182 - index - index2 * 10, 1)
+    for (let index22 = 0; index22 <= 14; index22++) {
+        for (let index4 = 0; index4 <= 9; index4++) {
+            ScreenBoba.image.drawLine(17 - index22, 184 - index4 - index22 * 10, 62 + index22, 184 - index4 - index22 * 10, 3)
+            ScreenBoba.image.drawLine(17 - index22, 183 - index4 - index22 * 10, 62 + index22, 183 - index4 - index22 * 10, 2)
+            ScreenBoba.image.drawLine(17 - index22, 182 - index4 - index22 * 10, 62 + index22, 182 - index4 - index22 * 10, 1)
         }
     }
     for (let index = 0; index < 150; index++) {
-        mySprite.image.drawTransparentImage(assets.image`Boba`, randint(17, 62), randint(180, 190))
+        ScreenBoba.image.drawTransparentImage(assets.image`Boba`, randint(17, 62), randint(180, 190))
     }
     for (let index = 0; index < 125; index++) {
-        mySprite.image.drawTransparentImage(assets.image`Boba`, randint(16, 63), randint(170, 180))
+        ScreenBoba.image.drawTransparentImage(assets.image`Boba`, randint(16, 63), randint(170, 180))
     }
-    sprites.destroy(mySprite2)
     for (let index = 0; index < 100; index++) {
-        mySprite.image.drawTransparentImage(assets.image`Boba`, randint(15, 64), randint(160, 170))
+        ScreenBoba.image.drawTransparentImage(assets.image`Boba`, randint(15, 64), randint(160, 170))
     }
     for (let index = 0; index < 75; index++) {
-        mySprite.image.drawTransparentImage(assets.image`Boba`, randint(14, 65), randint(150, 160))
+        ScreenBoba.image.drawTransparentImage(assets.image`Boba`, randint(14, 65), randint(150, 160))
     }
     for (let index = 0; index < 25; index++) {
-        mySprite.image.drawTransparentImage(assets.image`Boba`, randint(13, 66), randint(140, 150))
+        ScreenBoba.image.drawTransparentImage(assets.image`Boba`, randint(13, 66), randint(140, 150))
     }
-    mySprite.image.drawTransparentImage(assets.image`myImage`, 0, 0)
-    mySprite.image.drawTransparentImage(assets.image`Straw`, 55, 4)
-    mySprite3 = sprites.create(assets.image`myImage0`, SpriteKind.Player)
-    mySprite3.setPosition(256, 232)
-    mySprite3.setScale(2, ScaleAnchor.Middle)
+    ScreenBoba.image.drawTransparentImage(assets.image`myImage`, 0, 0)
+    ScreenBoba.image.drawTransparentImage(assets.image`Straw`, 55, 4)
+    BobaTeaText = sprites.create(assets.image`myImage0`, SpriteKind.Text)
+    BobaTeaText.setPosition(256, 232)
+    BobaTeaText.setScale(2, ScaleAnchor.Middle)
     animation.runMovementAnimation(
-    mySprite,
+    ScreenBoba,
     animation.animationPresets(animation.bobbing),
     2000,
     true
     )
-    mySprite3 = sprites.create(assets.image`myImage1`, SpriteKind.Player)
-    mySprite3.setScale(6, ScaleAnchor.Middle)
-    mySprite3.setPosition(256, 290)
-    mySprite3.z = 3
+    BobaTeaText = sprites.create(assets.image`myImage1`, SpriteKind.Player)
+    BobaTeaText.setScale(6, ScaleAnchor.Middle)
+    BobaTeaText.setPosition(256, 290)
+    BobaTeaText.z = 3
     scene.setBackgroundColor(5)
     for (let index = 0; index < 100; index++) {
         scene.backgroundImage().drawTransparentImage(assets.image`myImage2`, randint(0, 512), randint(0, 384))
@@ -108,9 +103,10 @@ function ActualBttons (Button: Sprite, Mouse: Sprite) {
         Button.setPosition(50, 15)
         sprites.setDataString(Button, "Type", "OpenNotes")
         Button.setImage(assets.image`myImage6`)
+        fancyText.draw("Customer #" + (CustomerNumber + 1), Button.image, 0, 0, 94, 7)
         fancyText.draw("Customer #" + (CustomerNumber + 1), Button.image, 3, 7, 94, 7, fancyText.geometric_sans_11)
-        for (let index = 0; index <= 4; index++) {
-            fancyText.draw("-" + customerOrders[CustomerNumber][index], Button.image, 3, index * 12 + 25, 94, 5, fancyText.geometric_sans_9)
+for (let index12 = 0; index12 <= 4; index12++) {
+            fancyText.draw("-" + customerOrders[CustomerNumber][index12], Button.image, 3, index12 * 12 + 25, 94, 5, fancyText.geometric_sans_9)
         }
     } else if (ButtonCheck("OpenNotes", Button)) {
         Button.setImage(assets.image`myImage5`)
@@ -129,6 +125,11 @@ function CreateNotePad () {
     sprites.setDataString(NotePad, "Type", "Notes")
     NotePad.setPosition(50, 15)
 }
+browserEvents.onMouseMove(function (x, y) {
+    if (Cursor) {
+        Cursor.setPosition(x, y)
+    }
+})
 function CreateCustomer () {
     CustomerText = fancyText.create("I want a <c9>" + customerOrders[0][0] + " " + customerOrders[0][1] + " Milk Tea</c9> With <c9>" + customerOrders[0][2] + " Boba</c9>." + "It has<c9> " + customerOrders[0][3] + "</c9> and <c9>" + customerOrders[0][4] + ".", 480, 12, fancyText.geometric_sans_11)
     CustomerNumber += 1
@@ -178,6 +179,23 @@ function Introduction () {
     TutorialGuyText("Now Enter <c9>The Kitchen</c9>. This is where you will make the order")
     TutorialGuyText("First go to the <c9>Milk Station</c9>")
 }
+sprites.onOverlap(SpriteKind.Mouse, SpriteKind.Button, function (sprite, otherSprite) {
+    sprite.setImage(img`
+        2 2 2 2 2 2 2 2 2 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 3 3 3 3 3 3 3 3 2 
+        2 2 2 2 2 2 2 2 2 2 
+        `)
+    if (browserEvents.MouseLeft.isPressed()) {
+        ActualBttons(otherSprite, sprite)
+    }
+})
 function ClearScreen () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
@@ -571,40 +589,23 @@ function ClearScreen () {
         ................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
         `)
 }
-sprites.onOverlap(SpriteKind.Mouse, SpriteKind.Button, function (sprite, otherSprite) {
-    sprite.setImage(img`
-        2 2 2 2 2 2 2 2 2 2 
-        2 3 3 3 3 3 3 3 3 2 
-        2 3 3 3 3 3 3 3 3 2 
-        2 3 3 3 3 3 3 3 3 2 
-        2 3 3 3 3 3 3 3 3 2 
-        2 3 3 3 3 3 3 3 3 2 
-        2 3 3 3 3 3 3 3 3 2 
-        2 3 3 3 3 3 3 3 3 2 
-        2 3 3 3 3 3 3 3 3 2 
-        2 2 2 2 2 2 2 2 2 2 
-        `)
-    if (browserEvents.MouseLeft.isPressed()) {
-        ActualBttons(otherSprite, sprite)
-    }
-})
 let CustomerText: fancyText.TextSprite = null
-let NotePad: Sprite = null
-let CustomerNumber = 0
-let mySprite3: Sprite = null
-let mySprite2: Sprite = null
 let Cursor: Sprite = null
+let NotePad: Sprite = null
+let BobaTeaText: Sprite = null
 let ProgressText: fancyText.TextSprite = null
 let tutorialGuyText: fancyText.TextSprite = null
+let KitchenButton: Sprite = null
+let ScreenBoba: Sprite = null
 let customerOrders: string[][] = []
-let mySprite: Sprite = null
+let CustomerNumber = 0
 namespace userconfig {
 export const ARCADE_SCREEN_WIDTH = 512
 export const ARCADE_SCREEN_HEIGHT = 384
 }
 stats.turnStats(true)
-mySprite = sprites.create(assets.image`myImage`, SpriteKind.Player)
-mySprite.z = 2
+ScreenBoba = sprites.create(assets.image`myImage`, SpriteKind.Player)
+ScreenBoba.z = 2
 let customerOrderList = [
 [
 "Small",
